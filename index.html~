@@ -13,8 +13,8 @@
 		<!-- Header -->
 			<header id="header">
 				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-				<h1><strong>I am Ainesh Bakshi</strong> <br />A Computer Science Major<br />
-				Interested in the intersection of <br />Artificial Intelligence and Algorithms<br />
+				<h1><strong>Ainesh Bakshi</strong> <br />Computer Science, Rutgers<br />
+				Artificial Intelligence and Algorithms<br />
 				</h1>
 			</header>
 
@@ -397,7 +397,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
-					<li><a href="ainesh.bakshi@rutgers.edu" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://github.com/aineshbakshi" class="icon fa-github"><span class="label">Github</span></a></li>
 					<li><a href="aineshbakshi@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 				</ul>
 			</footer>
