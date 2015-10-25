@@ -14,7 +14,7 @@
 		<!-- Header -->
 			<header id="header">
 				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-				<h1><strong>Ainesh Bakshi</strong></h1>
+				<h1><font size="6"><strong>Ainesh Bakshi</strong></font></h1>
 				<strong><a href="#aboutme">About Me</a></strong><br />
 				<strong><a href="#publications">Publications</a></strong> <br />
 				<strong><a href="#research">Research</a></strong> <br />
@@ -89,9 +89,64 @@
 					<header class="major">
 						<h2>Research</h2>
 					</header>
+					<h4>Query Reformulation</h4>
 					<p>
-						Coming soon.
+						During the summer of '15 I interned in the Search and Discoverability group at Bloomberg L.P.
+						The group primarily focuses on search within the <a href="https://en.wikipedia.org/wiki/Bloomberg_Terminal">Bloomberg terminal</a>, which indexes
+						a large amount of financial data, news, profiles and wikipedia articles.
+						My project at Bloomberg was query reformulation, i.e. detecting ambiguous or vague
+						queries and replacing or adding words to implicitly predict what the user might be
+						searching for. I created a contextual language model for adding and substituting words
+						using existing user query logs and generating n-grams for all the indexed documents. The contextual model was similar to the one
+						presented by Wang & Zhai in the following paper:
+						<p style="padding-left:30px;">
+						X. Wang and C. Zhai <a href="http://www.xuanhui.me/pub/qsub-cikm08.pdf">"Mining Term Association Patterns from Search
+							Logs for Effective Query Reformulation"</a> In Proceedings of CIKM, pages 479-488, 2008.</p>
+						I also contributed to generating click graphs, running hadoop clusters to aggregate training data and
+						designing performance metrics for search result evaluation. In addition I evaluated the performance of the search engine by comparing the
+						<a href="https://en.wikipedia.org/wiki/Discounted_cumulative_gain">NDCG </a> with and without the reformulation system. The reformulation system showed brilliant results
+						that could also be used as suggested search queries. I integrated my service with the search engine
+						and pushed the code to production, on all Bloomberg terminals across the world.
 					</p>
+
+					<h4>Kernel Approximation</h4>
+						<p>
+						During the summer of '14 I interned at  at Microsoft Research, India, in the Machine Learning and Optimization group. I worked with
+						<a href"http://research.microsoft.com/en-us/um/people/manik/">Manik Varma</a> on
+						Non Linear Kernel approximations for Support Vector Machines. The most popular non-linear kernel is the Gaussian (RBF) Kernel,
+						given its versatile applicability. However, the evaluation complexity is linear in the number of support vectors, which can be really large
+						in real world datasets. I used a Taylor Series expansion to approximate the Additive Gaussian Kernel (similar to the RBF Kernel), giving tremendous speedup in
+						evaluation time, bringing the complexity down to constant in the number of training examples. The algorithm performed up to 20% more
+						accurately than other linear approximations like Efficient Additive Kernels ( <a href="https://www.robots.ox.ac.uk/~vgg/publications/papers/vedaldi10.pdf">Vedaldi et al. </a> ) and Max Margin Additive Classifiers
+						( <a href="http://acberg.com/papers/mbm2012pami.pdf">Maji et al </a>).
+						<!--/*insert images for datasets + post code on github*/ -->
+						</p>
+					<h4>Human Robot Interaction</h4>
+						<p>
+							At Rutgers, I worked as a <a href="https://aresty.rutgers.edu/our-programs/research-assistant-program">Aresty Research Assistant</a>
+							with Professor <a href="http://www.pracsyslab.org/bekris">Kostas Bekris</a>, who heads the Pracsys lab at Rutgers.
+						  The problem statement was to evaluate collision free trajectories that humans are accustomed to. The most efficient
+							trajectory for a robotic arm doesn’t mimic motion that is natural and intuitive for humans. In a collaborative environment
+							where safety and precision is essential, the robot must execute trajectories that are intuitive for humans. My project entailed
+							mapping the environment, localizing the robot with respect to the environment, detecting pose, recognizing objects and obstacles
+							and calculating optimal gripping configurations given parallel and vacuum grippers. The Pracsys team participated in the Amazon Picking Challenge
+							and a video of the Robot in action can be found <a href="https://www.youtube.com/watch?v=_CZZjStPckM">here</a>. I presented a <a href="pubs/HRI_poster.pdf">poster</a> for the same
+							at the Aresty Undergraduate Research Symposium.
+						</p>
+
+					<h4>Algorithms </h4>
+						<p>
+								I have been actively involved in external memory algorithms and graph algorithms research with Professor <a href="http://www.cs.rutgers.edu/~farach/">Martin Farach-Colton</a>. I primarily worked on Betrfs,
+								the write optimized file system, utilizing B^e Trees as it’s underlying data structure. The <a href="https://www.usenix.org/system/files/conference/fast15/fast15-paper-jannen_william.pdf">
+									Betrfs</a> file system provides copious performance
+								enhancement for Solid State Drives, by buffering the writes and executing one large write instead of numerous small ones. In SSDs, every time
+								a change is made in a block, the entire block needs to be rewritten, thereby leading to write amplification. Benchmarking results showed that
+								Betrfs has negligible write amplification as opposed to other popular filesystems like Ext4, Zfs, Xfs, Btrfs and F2FS. </br>I also came up with a
+								research problem: single source shortest paths on graphs where the edge weights change over time according to a periodic function,
+								which can be used to model public transport networks like the bus system at Rutgers. The numerous combinations of bus routes that one can
+								take to get around Rutgers affords hopping a couple of frequent buses rather than waiting for the less frequent direct one. This is a relatively
+								 unexplored approach to path planning and I am currently working on proving some elementary results.
+						</p>
 				</section>
 				<!--
 					<section id="two">
@@ -460,7 +515,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<footer id="footer">
 				<ul class="icons">
 					<li><a href="https://github.com/aineshbakshi" class="icon fa-github"><span class="label">Github</span></a></li>
-					<li><a href="aineshbakshi@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					<li><a href="mailto:aineshbakshi@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 				</ul>
 			</footer>
 
