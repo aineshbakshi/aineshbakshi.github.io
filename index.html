@@ -1,6 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$']]},
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+		</script>
+		<script type="text/javascript" async
+    	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		</script>
 		<title>Ainesh Bakshi's Personal Website</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +32,7 @@
 
 		<!-- Main -->
 			<div id="main">
-				<h1><font size="10"><strong>Artificial Intelligence.   Algorithms.   Complexity.</strong></font></h1>
+				<!--<h1><font size="10"><strong>Artificial Intelligence.   Algorithms.   Complexity.</strong></font></h1> -->
 				<!-- One -->
 				  <a name="aboutme"> </a>
 					<section id="one">
@@ -31,19 +40,33 @@
 							<h2>About Me</h2>
 						</header>
 						<p>
-						Hi! I am Ainesh Bakshi, a Computer Science major at Rutgers, New Brunswick.
-						My research interests lie in the intersection of Artificial Intelligence and Algorithms.
-						Currently, I am excited about my foray in Complexity Theory.<br />
+						Hi! I am Ainesh Bakshi, a Research Fellow at Rutgers, New Brunswick. I finished my undergrad at Rutgers in January 2016.
+						My research interests lie in the intersection of Algorithms and Machine Learning.
+						Currently, I am working on Theoretical Machine Learning and Approximation Algorithms.<br />
 						Previously, I interned in the Search and Discoverabiltiy Group at Bloomberg and
 						the Machine Learning and Optimization group at Microsoft Research.
-						I have also been involved with research in Robotics, Computer Vision, Document Classification,
-						Multi-Objective Optimization and External Memory Algorithms.
+						I have also been involved with research in External Memory Algorithms and their application to File Systems.
 						</p>
 					</section>
 
 				<!-- Two -->
 				<a name="publications"></a>
 				<section id="two">
+					<header class="major">
+						<h2>Manuscripts</h2>
+					</header>
+					<p>
+						<li><strong>A. Bakshi</strong>, P. Awasthi, <a href="pubs/Clustering.pdf">"Efficient Clustering Algorithms for Computing Better Local Optima"
+						</a>, Manuscript.
+						</li>
+
+						<li><strong>A. Bakshi</strong>, <a href="pubs/Below_2.pdf">"Polynomial-time Algorithm for {1, 2}-Instances below 2-perturbation resilience"
+						</a>, Manuscript.
+						</li>
+
+						<li>A. Conway, <strong>A. Bakshi</strong>,  Y. Jiao, W. Jannen, Y. Zhan, J. Yuan,
+							M. Bender, R. Johnson, B. Kuzmaul, D. Porter, M. Farach-Colton,<a href="pubs/Filesystems.pdf">"File Systems fated for Senescence? Nonsense, Says Science!"</a>, Manuscript.
+					</p>
 					<header class="major">
 						<h2>Publications</h2>
 					</header>
@@ -56,8 +79,6 @@
 					<li><strong>A. Bakshi</strong>, K. Goel and Raunaq. Vohra, <a href="pubs/Classification.pdf">
 						“A Novel Feature Selection and Extraction Technique for Classification”</a> ICFHR 2014, pp. 104-109.
 					</li>
-
-
 
 					<li>R. Sant, N. Kulkarni,<strong> A. Bakshi</strong>, K. Goel, and S. Kapur,
 						<a href="pubs/PathPlanning.pdf">“Autonomous Robot Navigation: Path Planning on a Detail-Preserving Reduced-Complexity Representation of 3D Point Clouds”</a>
@@ -86,6 +107,88 @@
 					<header class="major">
 						<h2>Research</h2>
 					</header>
+					<h4>Stable Clustering</h4>
+					<p>
+						Clustering is one of the most common problems in Machine Learning.
+						Clustering under center based objectives ($k$-means, $k$-median, $k$-center) is NP-Hard.
+						However, in practice, the <a href="https://www.wikiwand.com/en/Lloyd%27s_algorithm">$k$-means heuristic </a> works reasonably well, and converges quickly.
+						In order to better model the data sets we observe in the real world, we must move beyond
+						worst case analysis. Therefore, we study various natural notions of "stability",
+						including <a href="http://www.cs.huji.ac.il/~nati/PAPERS/stable_instance.pdf">Bilu and Linial </a> stability, where perturbing any set of pairwise distances by a
+						factor of at most $\alpha$, the optimal clustering does not change. Assuming that our
+						data is $\alpha$ stable provides structure that we can exploit to come up with polynomial-time
+						algorithms to find the optimal clustering. <a href="https://www.cs.rutgers.edu/~pa336/static/pub/clustering-IPL.pdf">Awasthi et. al.</a> presented the first polynomial-time algorithm
+						for clustering $3$-stable instances.
+						The best known result is a polynomial-time
+						algorithm for $2$-stable instances by <a href="https://arxiv.org/pdf/1607.06442v1.pdf">Makarychev et. al.</a> The only known non trivial lower
+						bound is for the $k$-center objective which states that any instance that is $2-\epsilon$
+						stable is NP-Hard. There is no known lower bound for stable instances with $k$-means and $k$-median
+						objective.<br />
+						The best result we have so far shows that no existing reduction technique can be used to prove a lower
+						bound for $k$-means and $k$-median objectives. Such reductions reduce NP-Complete problems like $1-3$ SAT,
+						$3$-Cover or Perfect Dominating Set (PDS) to a clustering instance where all pair-wise distances
+						are either 1 or 2. In particular, <a href="http://www.levreyzin.com/papers/BenDavidR14.pdf">Ben-David and Reyzin (2014)</a> reduce the perfect dominating set
+						promise problem to a clustering instance with all pair-wise distances either $\frac{1}{2}$
+						or $1$ to hardness of $\alpha$-center stability. Since, scaling the distances by any factor preserves
+						perturbation resilience, their instance is equivalent to one where all pair-wise distances are $1$ or $2$
+						(scaling by 2). <a href="https://arxiv.org/pdf/1505.03924.pdf"> Balcan, Haghtalab and White (2016) </a> also reduce PDS to a clustering instance with
+						pair-wise distances either $1$ or $2$ to show hardness of $(2-\epsilon)$-perturbation resilience
+						under the  k-center objective. I came up with a polynomial time algorithm that solves such
+						instances for $\alpha \geq 1 + \epsilon$ , for any $\epsilon > 0$, given $k$-means or $k$-median objective.
+						Therefore, we can conclude that such instances are easy, and we would need new reduction techniques to prove
+						hardness results for $k$-means and $k$-median. <br />
+
+						With Professor Awasthi, I also formalized the problem of efficiently computing  good
+						local optima for a non-convex optimization problem. We study this problem in the
+						context of clustering and design polynomial-time algorithms to achieve the desired output.
+						We define a good locally optimal solution as a clustering where each point is closer to the center
+						of its optimal cluster than to any point outside the optimal cluster. Based on this
+						definition, we prove that if a set of $n$ points is guaranteed to have a good locally optimal
+						$k$-clustering, there exists a polynomial-time algorithm that outputs a set of $k$ clusters such
+						that the resulting clustering is locally good. <br />
+
+						Further, we also address the common issue in clustering problems that concerns the choice of $k$,
+						the number of clusters. In many settings it is unclear apriori what the right number of clusters should be,
+						whereas it is easier to prescribe a minimum cluster size. We prove that there exists a polynomial-time
+						algorithm which when given a set of $n$ points such that there exists a good locally optimal
+						clustering in which the size of each cluster is at least $r(n)$, outputs good locally optimal
+						clustering where each cluster has cardinality at least $r(n)$.
+					</p>
+
+					<h4>External Memory Algorithms</h4>
+					<p>
+						External-memory data structures are analysed in terms of I/O complexity.
+						$B^\epsilon$-trees have insert, point query and range query complexity of
+						$\frac{\log_B{N}}{\epsilon B^{1-\epsilon}}$, $\frac{\log_B{N}}{\epsilon}$ and
+						$\frac{\log_B{N}}{\epsilon} + \frac{k}{B}$ respectively, where $N$ is the total
+						number of items in the tree, $B$ is the nodesize and $k$ is the range of the
+						data we query over. In contrast, $B$-trees have $\log_B{N}$ insert and point query
+						and $\log_B{N} + \frac{k}{B}$ range query complexity. A $B^\epsilon$-tree is a
+						write optimised dictionary data structure, i.e. instead of writing entire blocks
+						for small updates and inserts, it aggregates these operations to perform larger
+						writes. Therefore, a larger nodesize ($B$) increases insert and range query
+						performance without amplifying the number of writes, presenting a good theoretical
+						candidate to mitigate aging in file systems. <br />
+
+						As of now, most Unix based file systems used poor / no data structures and heuristics
+						for space allocation and claim that aging ( read/write  performance degradation over
+						time ) is a solved problem.  However, seek times on rotational disks have remained
+						approximately the same and bandwidth has increased as a function of capacity, thus the
+						theory predicts that fragmentation on disk should have an exacerbated effect on read
+						performance (aging) over time.  We created realistic workloads, such as a mailserver and
+						running through the git history of large open-source projects
+						that caused these heuristics to fail. For example, on EXT4 and ZFS, a few hundred
+						git pull operations can reduce read performance by a factor of 2, as compared to a
+						defragmented copy of the same file system, and performing a thousand pulls can reduce
+						performance by up to $30$x. We created microbenchmarks to show that traditional file
+						systems are very sensitive to file creation order. Creating files in random order can
+						slow down file system reads by a factor of up to 8x which indicates that file-layout
+						heuristics can fail easily. We also demonstrated that BetrFS, a file system based on
+						$B^\epsilon$-tree avoids aging, which corroborates the theoretical performance
+						guarantees of $B^\epsilon$-trees.
+					</p>
+
+
 					<h4>Query Reformulation</h4>
 					<p>
 						During the summer of '15 I interned in the Search and Discoverability group at Bloomberg L.P.
@@ -131,19 +234,7 @@
 							at the Aresty Undergraduate Research Symposium.
 						</p>
 
-					<h4>Algorithms </h4>
-						<p>
-								I have been actively involved in external memory algorithms and graph algorithms research with Professor <a href="http://www.cs.rutgers.edu/~farach/">Martin Farach-Colton</a>. I primarily worked on Betrfs,
-								the write optimized file system, utilizing B^e Trees as it’s underlying data structure. The <a href="https://www.usenix.org/system/files/conference/fast15/fast15-paper-jannen_william.pdf">
-									Betrfs</a> file system provides copious performance
-								enhancement for Solid State Drives, by buffering the writes and executing one large write instead of numerous small ones. In SSDs, every time
-								a change is made in a block, the entire block needs to be rewritten, thereby leading to write amplification. Benchmarking results showed that
-								Betrfs has negligible write amplification as opposed to other popular filesystems like Ext4, Zfs, Xfs, Btrfs and F2FS. </br>I also came up with a
-								research problem: single source shortest paths on graphs where the edge weights change over time according to a periodic function,
-								which can be used to model public transport networks like the bus system at Rutgers. The numerous combinations of bus routes that one can
-								take to get around Rutgers affords hopping a couple of frequent buses rather than waiting for the less frequent direct one. This is a relatively
-								 unexplored approach to path planning and I am currently working on proving some elementary results.
-						</p>
+
 				</section>
 				<!--
 					<section id="two">
